@@ -24,7 +24,7 @@ function Product(id, name, price, expiryDate) {
         this.name = name;
         this.price = price;
         this.expiryDate = expiryDate;
-    }
+    };
 
 // Complete the dateDiff function
 
@@ -41,7 +41,7 @@ Object.defineProperty(Product.prototype, 'daysToExpire', {
 
 Product.prototype.getDetails = function() {
     return "Product Name: " + this.name + " , Product Price: " + this.price
-  }
+  };
 
 // Define the MagicProduct class here
 
@@ -49,11 +49,11 @@ function MagicProduct(id, name, price, expiryDate, points, isBonus) {
         Product.call(this, id, name, price, expiryDate);
         this.points = points;
         this.isBonus = isBonus;
-}
+};
 
 // Establish inheritance between Product() & MagicProduct() here
 
-MagicProduct.prototype = Object.create(Product.prototype)
+MagicProduct.prototype = Object.create(Product.prototype);
 
 // Define Rating class here
 
@@ -73,7 +73,7 @@ class Rating {
             this.rate = "BAD"
         }
     }
-}
+};
 
 // Complete the loadProducts function
 const loadProducts = (map, prodId) => {
@@ -319,7 +319,7 @@ function init(data) {
     const shop = (prodList, tBill, lastProd) => {
         let totalBill = tBill;
         const prId = generateProductId();
-        let product = Object.is(lastProd, undefined) ? lastProd : getProduct(prodList, prId); // Assign the value of product here
+        let product = Object.is(lastProd, undefined) ? getProduct(prodList, prId) : lastProd; // Assign the value of product here
         let productDetails = product.getDetails(); // Assign the value of productDetails here
 
         rl.question(`You can buy - ${productDetails}.\n Do you want to buy this item <Y/N>? `.yellow, function (option) {
@@ -379,7 +379,7 @@ function init(data) {
 
     // Complete this function
     const exitLost = () => {
-        let pointsToReach = 500 - player.getCurrentScore(); // Assign calculated value to pointsToReach here
+        let pointsToReach = player.getCurrentScore() - 500; // Assign calculated value to pointsToReach here
         console.log(`Your chances are over! You are short of ${pointsToReach} to become a Shopping Master. Good Luck for next time!`.yellow);
         rateAndExit();
     };
